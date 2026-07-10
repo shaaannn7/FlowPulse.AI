@@ -116,7 +116,7 @@ export const SignalControlPanel: React.FC = () => {
 
                 {/* Countdown Ring timer */}
                 {isCurrentPhase && !simState.signalFailure && (
-                  <div className="flex flex-col items-end justify-center relative">
+                  <div className="relative flex items-center justify-center">
                     <svg className="w-9 h-9 transform -rotate-90">
                       <circle cx="18" cy="18" r="14" className="stroke-slate-900 fill-transparent" strokeWidth="2.5" />
                       <motion.circle
