@@ -44,3 +44,5 @@ logs/
 # Machine learning weights
 backend/weights/*.pt
 backend/weights/*.onnx
+*.db-shm
+*.db-wal
