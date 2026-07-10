@@ -27,7 +27,7 @@ const getAudioContext = (): AudioContext | null => {
   return AudioCtx ? new AudioCtx() : null;
 };
 
-export const playSynthesizedSound = (type: 'click' | 'success' | 'notification' | 'emergency') => {
+export const playSynthesizedSound = (type: 'click' | 'success' | 'notification' | 'emergency' | 'alert') => {
   if (isMutedGlobal) return;
   const ctx = getAudioContext();
   if (!ctx) return;
@@ -56,6 +56,7 @@ export const playSynthesizedSound = (type: 'click' | 'success' | 'notification' 
       osc.stop(now + 0.05);
       break;
 
+    case 'alert':
     case 'notification':
       // Elegant high-pitched double chime
       osc.type = 'sine';

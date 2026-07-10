@@ -11,7 +11,7 @@ export const MissionControlPanel: React.FC = () => {
 
   // Auto-advance mission state based on simulation
   useEffect(() => {
-    let timer: NodeJS.Timeout;
+    let timer: ReturnType<typeof setTimeout>;
     if (missionState === 'IDLE') {
       // Start mission automatically for demo
       timer = setTimeout(() => {

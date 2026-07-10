@@ -9,8 +9,6 @@ import { useTheme } from '../hooks/useTheme';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { LayoutDashboard, BarChart3, Settings, ClipboardList, Zap, Moon, Sun, Activity, Sliders, Wifi, Volume2, VolumeX, Map } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Breadcrumbs } from '../components/ui/Breadcrumbs';
-import { Notifications } from '../components/ui/Notifications';
 import { GlobalCommandPalette } from '../components/ui/GlobalCommandPalette';
 import { CommandPalette } from '../components/ui/CommandPalette';
 import { JudgeModeHUD } from '../components/ui/JudgeModeHUD';

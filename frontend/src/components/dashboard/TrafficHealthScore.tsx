@@ -3,7 +3,7 @@ import { Card } from '../ui/Card';
 import { useDashboardStore } from '../../hooks/useDashboardStore';
 import { useWebSocket } from '../../context/WebSocketContext';
 import { Heart, Activity, Clock, ShieldAlert } from 'lucide-react';
-import { motion, useSpring, useTransform, animate } from 'framer-motion';
+import { motion, useSpring, useTransform } from 'framer-motion';
 
 export const TrafficHealthScore: React.FC = () => {
   const { simState } = useDashboardStore();

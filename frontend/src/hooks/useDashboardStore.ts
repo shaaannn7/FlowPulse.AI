@@ -59,7 +59,7 @@ interface DashboardStore {
 
   // Event Timeline Log
   events: TimelineEvent[];
-  addEvent: (evt: Omit<TimelineEvent, 'id' | 'timestamp'>) => void;
+  addEvent: (evtOrLevel: Omit<TimelineEvent, 'id' | 'timestamp'> | 'INFO' | 'WARNING' | 'ERROR', message?: string, source?: string) => void;
   clearEvents: () => void;
 
   // Selected Digital Twin Junction
@@ -246,12 +246,23 @@ export const useDashboardStore = create<DashboardStore>((set) => ({
       source: 'GATEWAY',
     },
   ],
-  addEvent: (evt) =>
+  addEvent: (evtOrLevel, message, source) =>
     set((state) => {
+      let eventPayload: Omit<TimelineEvent, 'id' | 'timestamp'>;
+      if (typeof evtOrLevel === 'string') {
+        eventPayload = {
+          level: evtOrLevel as 'INFO' | 'WARNING' | 'ERROR',
+          message: message || '',
+          source: source || 'SYSTEM'
+        };
+      } else {
+        eventPayload = evtOrLevel;
+      }
+      
       const newEvent: TimelineEvent = {
         id: Math.random().toString(),
         timestamp: new Date().toLocaleTimeString(),
-        ...evt
+        ...eventPayload
       };
       return { events: [newEvent, ...state.events].slice(0, 100) };
     }),
